@@ -54,13 +54,44 @@ def func_f(n: int):
 
 
 def func_g(n: int, m: int):
-    pass
+    return np.array([[j for j in range(1 + i, n + i + 1)] for i in range(0, m)])
+
+
+def func_h(n: int, m: int):
+    return np.array(
+        [[j for j in range(1 + n * (i - 1), n * i + 1)] for i in range(1, m + 1)]
+    )
+
+
+def func_i(n: int):
+    return np.array([0 for i in range(0, n)])
+
+
+def print_funcs():
+    print(func_a())
+    print()
+    print(func_b(10))
+    print()
+    print(func_c(10))
+    print()
+    print(func_d())
+    print()
+    print(func_e(10))
+    print()
+    print(func_f(10))
+    print()
+    print(func_g(10, 10))
+    print()
+    print(func_h(10, 10))
+    print()
+    print(func_i(10))
 
 
 def main():
-    number_itrs = 1
-    avg_exec_time = time(func_f.__name__, 3, number_itrs=number_itrs) / number_itrs
-    print(f"Average Execution Time: {avg_exec_time:.3} seconds")
+    # number_itrs = 1
+    # avg_exec_time = time(func_f.__name__, 3, number_itrs=number_itrs) / number_itrs
+    # print(f"Average Execution Time: {avg_exec_time:.3} seconds")
+    print_funcs()
 
 
 if __name__ == "__main__":
