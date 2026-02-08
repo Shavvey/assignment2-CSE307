@@ -1,6 +1,5 @@
 import timeit as t
 import numpy as np
-from time import sleep
 
 
 # example to show how the timeit function works
@@ -13,6 +12,10 @@ def time(function_name: str, *args, number_itrs: int | None = None) -> float:
     args = "".join([str(arg) + ", " for arg in args]).strip(", ")
     print(args)
     if number_itrs != None:
+        if number_itrs <= 0:
+            raise ValueError(
+                "[ERROR]: number_itrs must be some positive value larger than zero!"
+            )
         return t.timeit(
             f"{function_name}({args})",
             setup=f"from __main__ import {function_name}",
@@ -29,17 +32,35 @@ def func_a():
 
 
 def func_b(n: int):
-    return np.array(list(range(0, n + 1)))
+    return np.array(list(range(1, n + 1)))
 
 
 def func_c(n: int):
     return np.array(list(range(0, 3 * (n + 1), 3)))
 
 
+def func_d():
+    return np.array([[x for x in range(i, i + 4)] for i in range(1, 4)])
+
+
+def func_e(n: int):
+    return np.array([[x for x in range(i, n + i)] for i in range(1, 4)])
+
+
+def func_f(n: int):
+    return np.array(
+        [[j for j in range(1 + n * (i - 1), n * i + 1)] for i in range(1, 4)]
+    )
+
+
+def func_g(n: int, m: int):
+    pass
+
+
 def main():
-    number_itrs = 10_000
-    exec_time = time(func_b.__name__, 10, number_itrs=number_itrs) / number_itrs
-    print(f"Average Execution Time: {exec_time:.3} seconds")
+    number_itrs = 1
+    avg_exec_time = time(func_f.__name__, 3, number_itrs=number_itrs) / number_itrs
+    print(f"Average Execution Time: {avg_exec_time:.3} seconds")
 
 
 if __name__ == "__main__":
