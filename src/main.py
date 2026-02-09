@@ -64,7 +64,7 @@ def func_h(n: int, m: int):
 
 
 def func_i(n: int):
-    return np.array([0 for i in range(0, n)])
+    return np.array([0 for _ in range(0, n)])
 
 
 def print_funcs():
@@ -87,11 +87,46 @@ def print_funcs():
     print(func_i(10))
 
 
+def func_2a_numpy(n: int):
+    return np.zeros(n)
+
+
+def func_2a_list(n: int):
+    l = [0 for _ in range(n)]
+    return np.array(l)
+
+
+def func_2b_numpy(n: int):
+    return np.ones(n)
+
+
+def func_2b_list(n: int):
+    l = [1 for _ in range(n)]
+    return np.array(l)
+
+
+def func_2c_numpy(n: int):
+    return np.array([5 for _ in range(n)])
+
+
+def func_2c_list(n: int):
+    l = [5 for _ in range(n)]
+    return np.array(l)
+
+
+def func_2d_numpy(a: int, n: int, d: int):
+    return np.array([a + i * d for i in range(n)])
+
+
+def func_2d_list(a: int, n: int, d: int):
+    l = [a + i * d for i in range(n)]
+    np.array(l)
+
+
 def main():
-    # number_itrs = 1
-    # avg_exec_time = time(func_f.__name__, 3, number_itrs=number_itrs) / number_itrs
-    # print(f"Average Execution Time: {avg_exec_time:.3} seconds")
-    print_funcs()
+    number_itrs = 1000
+    avg_exec_time = time(func_f.__name__, 3, number_itrs=number_itrs) / number_itrs
+    print(f"Average Execution Time: {avg_exec_time:.3} seconds")
 
 
 if __name__ == "__main__":
