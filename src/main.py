@@ -10,7 +10,6 @@ def example_func():
 # NOTE: args is a variatic array of the arguments we need to pass to the function
 def time(function_name: str, *args, number_itrs: int | None = None) -> float:
     args = "".join([str(arg) + ", " for arg in args]).strip(", ")
-    print(args)
     if number_itrs != None:
         if number_itrs <= 0:
             raise ValueError(
@@ -87,6 +86,28 @@ def print_funcs():
     print(func_i(10))
 
 
+def func_timing():
+    number_itrs = 1000
+    avg_exec_time = time(func_a.__name__, number_itrs=number_itrs) / number_itrs
+    print(f"Average execution time for func_a: {avg_exec_time:.3} seconds")
+    avg_exec_time = time(func_b.__name__, 10, number_itrs=number_itrs) / number_itrs
+    print(f"Average execution time for func_b: {avg_exec_time:.3} seconds")
+    avg_exec_time = time(func_c.__name__, 10, number_itrs=number_itrs) / number_itrs
+    print(f"Average execution time for func_c: {avg_exec_time:.3} seconds")
+    avg_exec_time = time(func_d.__name__, number_itrs=number_itrs) / number_itrs
+    print(f"Average execution time for func_d: {avg_exec_time:.3} seconds")
+    avg_exec_time = time(func_e.__name__, 10, number_itrs=number_itrs) / number_itrs
+    print(f"Average execution time for func_e: {avg_exec_time:.3} seconds")
+    avg_exec_time = time(func_f.__name__, 10, number_itrs=number_itrs) / number_itrs
+    print(f"Average execution time for func_f: {avg_exec_time:.3} seconds")
+    avg_exec_time = time(func_g.__name__, 10, 10, number_itrs=number_itrs) / number_itrs
+    print(f"Average execution time for func_g: {avg_exec_time:.3} seconds")
+    avg_exec_time = time(func_h.__name__, 10, 10, number_itrs=number_itrs) / number_itrs
+    print(f"Average execution time for func_h: {avg_exec_time:.3} seconds")
+    avg_exec_time = time(func_i.__name__, 10, number_itrs=number_itrs) / number_itrs
+    print(f"Average execution time for func_i: {avg_exec_time:.3} seconds")
+
+
 def func_2a_numpy(n: int):
     return np.zeros(n)
 
@@ -124,9 +145,7 @@ def func_2d_list(a: int, n: int, d: int):
 
 
 def main():
-    number_itrs = 1000
-    avg_exec_time = time(func_f.__name__, 3, number_itrs=number_itrs) / number_itrs
-    print(f"Average Execution Time: {avg_exec_time:.3} seconds")
+    func_timing()
 
 
 if __name__ == "__main__":
