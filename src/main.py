@@ -159,16 +159,16 @@ def func2_timing():
     number_itrs = 1000
     a2_list_time = time(func_2a_list.__name__, 10, number_itrs=number_itrs)
     a2_numpy_time = time(func_2a_numpy.__name__, 10, number_itrs=number_itrs)
-    print(f"Time difference: {a2_list_time - a2_numpy_time} seconds")
+    print(f"a2 Time difference: {a2_list_time - a2_numpy_time} seconds")
     b2_list_time = time(func_2b_list.__name__, 10, number_itrs=number_itrs)
     b2_numpy_time = time(func_2b_numpy.__name__, 10, number_itrs=number_itrs)
-    print(f"Time difference: {b2_list_time - b2_numpy_time} seconds")
+    print(f"b2 Time difference: {b2_list_time - b2_numpy_time} seconds")
     c2_list_time = time(func_2c_list.__name__, 10, number_itrs=number_itrs)
     c2_numpy_time = time(func_2c_numpy.__name__, 10, number_itrs=number_itrs)
-    print(f"Time difference: {c2_list_time - c2_numpy_time} seconds")
+    print(f"c2 Time difference: {c2_list_time - c2_numpy_time} seconds")
     d2_list_time = time(func_2d_list.__name__, 10, 3, 4, number_itrs=number_itrs)
     d2_numpy_time = time(func_2d_numpy.__name__, 10, 3, 4, number_itrs=number_itrs)
-    print(f"Time difference: {d2_list_time - d2_numpy_time} seconds")
+    print(f"d2 Time difference: {d2_list_time - d2_numpy_time} seconds")
 
 
 def main():
