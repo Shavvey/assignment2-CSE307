@@ -155,20 +155,33 @@ def print_funcs2():
     print(func_2d_numpy(10, 3, 4))
 
 
+def print_time_difference(func_name: str, difference: float):
+    if difference > 0:
+        print(f"Numpy function {func_name}_numpy is {difference:.2} seconds faster.")
+    else:
+        print(f"List function {func_name}_list is {-1*difference:.2} seconds faster.")
+
+
+
 def func2_timing():
     number_itrs = 1000
     a2_list_time = time(func_2a_list.__name__, 10, number_itrs=number_itrs)
     a2_numpy_time = time(func_2a_numpy.__name__, 10, number_itrs=number_itrs)
-    print(f"a2 Time difference: {a2_list_time - a2_numpy_time} seconds")
+    difference = a2_list_time - a2_numpy_time
+    # NOTE: dumb strip to get rid of numpy postfix in function
+    print_time_difference(func_2a_numpy.__name__.strip("_numpy"), difference)
     b2_list_time = time(func_2b_list.__name__, 10, number_itrs=number_itrs)
     b2_numpy_time = time(func_2b_numpy.__name__, 10, number_itrs=number_itrs)
-    print(f"b2 Time difference: {b2_list_time - b2_numpy_time} seconds")
+    difference = b2_list_time - b2_numpy_time
+    print_time_difference(func_2b_numpy.__name__.strip("_numpy"), difference)
     c2_list_time = time(func_2c_list.__name__, 10, number_itrs=number_itrs)
     c2_numpy_time = time(func_2c_numpy.__name__, 10, number_itrs=number_itrs)
-    print(f"c2 Time difference: {c2_list_time - c2_numpy_time} seconds")
+    difference = c2_list_time - c2_numpy_time
+    print_time_difference(func_2c_numpy.__name__.strip("_numpy"), difference)
     d2_list_time = time(func_2d_list.__name__, 10, 3, 4, number_itrs=number_itrs)
     d2_numpy_time = time(func_2d_numpy.__name__, 10, 3, 4, number_itrs=number_itrs)
-    print(f"d2 Time difference: {d2_list_time - d2_numpy_time} seconds")
+    difference = d2_list_time - d2_numpy_time
+    print_time_difference(func_2d_numpy.__name__.strip("_numpy"), difference)
 
 
 def main():
