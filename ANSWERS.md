@@ -28,6 +28,6 @@ by passing a datatype though the dtype parameter.
 
 ## Part 4: What is the Difference Between `arange` and `linspace`?
 
-Linspace is similar to arange with one subtle difference,
-when using linspace you specify the number of steps,
+Linspace is similar to arange with one subtle difference.
+When using linspace, you specify the number of elements/samples,
 and when using arange you specify the size of the steps.
